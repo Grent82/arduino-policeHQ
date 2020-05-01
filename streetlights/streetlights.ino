@@ -15,7 +15,7 @@ void setup() {
   randomSeed(analogRead(0));
 
   for (int i = 0; i < ledCount; i++) {
-    ledArray[i].Init(startingPin - i, 150, 1000);
+    ledArray[i].Init(startingPin - i, 30, 50);
   }
 }
 
@@ -29,13 +29,7 @@ void multiRandomFlicker() {
   bool canFlicker = util.SwitchBooleanWithDelay(3000);
   int randF = util.GetRandomIntWithDelay(ledCount);
 
-  for (int i = 0; i < ledCount; i++) {
-    if (canFlicker && randF == i) {
-      ledArray[randF].Flicker();
-    } else {
-      ledArray[i].On();
-    }
-  }
+  update(randF, canFlicker);
 }
 
 void singleRandomFlicker() {
@@ -47,11 +41,16 @@ void singleRandomFlicker() {
     previousLed = randF;
   }
 
+  update(randF, canFlicker);
+}
+
+void update(int ledIndex, bool canFlicker) {
   for (int i = 0; i < ledCount; i++) {
-    if (canFlicker && randF == i) {
-      ledArray[randF].Flicker();
+    if (canFlicker && ledIndex == i) {
+      ledArray[ledIndex].Flicker();
     } else {
       ledArray[i].On();
     }
   }
 }
+
