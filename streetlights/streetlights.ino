@@ -7,8 +7,10 @@ Led ledArray[3] = {Led(), Led(), Led()};
 Util util;
 
 int startingPin = 13;
-int ledCount = sizeof(ledArray) / sizeof(ledArray[0]);
+int pauseBetweenFlickeringInMs = DELAY_FOR_NEW_BOOLEAN;
+int delayBetweenNewRandomValueInMs = DELAY_FOR_NEW_RANDOM;
 
+int ledCount = sizeof(ledArray) / sizeof(ledArray[0]);
 int previousLed = -1;
 
 void setup() {
@@ -26,15 +28,15 @@ void loop() {
 }
 
 void multiRandomFlicker() {
-  bool canFlicker = util.SwitchBooleanWithDelay(3000);
-  int randF = util.GetRandomIntWithDelay(ledCount);
+  bool canFlicker = util.SwitchBooleanWithDelay(pauseBetweenFlickeringInMs);
+  int randF = util.GetRandomIntWithDelay(ledCount, delayBetweenNewRandomValueInMs);
 
   update(randF, canFlicker);
 }
 
 void singleRandomFlicker() {
-  bool canFlicker = util.SwitchBooleanWithDelay(3000);
-  int randF = util.GetRandomIntWithDelay(ledCount);
+  bool canFlicker = util.SwitchBooleanWithDelay(pauseBetweenFlickeringInMs);
+  int randF = util.GetRandomIntWithDelay(ledCount, delayBetweenNewRandomValueInMs);
   if (canFlicker && randF != previousLed) {
     randF = previousLed;
   } else if (!canFlicker) {
