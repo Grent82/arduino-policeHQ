@@ -3,53 +3,43 @@
 #include "util.h"
 
 
-Led ledArray[17] = {Led(), Led(), Led(), Led(), Led(), Led(), Led(), Led(), Led(), Led(), Led(), Led(), Led(), Led(), Led(), Led(), Led()};
-Led landingPadLed;
+Led ledArray[3] = {Led(), Led(), Led()};
 Util util;
 
-int ledCount = sizeof(ledArray) / sizeof(ledArray[0]);
-
-int startingPin = ledCount - 1;
-int previousLed = -1;
+int startingPin = 13;
 int pauseBetweenFlickeringInMs = DELAY_FOR_NEW_BOOLEAN;
 int delayBetweenNewRandomValueInMs = DELAY_FOR_NEW_RANDOM;
+
+int ledCount = sizeof(ledArray) / sizeof(ledArray[0]);
+int previousLed = -1;
 
 void setup() {
   randomSeed(analogRead(0));
 
   for (int i = 0; i < ledCount; i++) {
-    ledArray[i].Init(startingPin - i, 200, 800);
+    ledArray[i].Init(startingPin - i, 30, 50);
   }
-
-  landingPadLed.Init(ledCount, 1000, 1000);
 }
 
 void loop() {
 
   //multiRandomFlicker();
   singleRandomFlicker();
-
-  landingPadLed.Flicker2();
 }
 
 void multiRandomFlicker() {
-  bool canFlicker = util.SwitchBooleanWithDelay(random(pauseBetweenFlickeringInMs, 5000));
+  bool canFlicker = util.SwitchBooleanWithDelay(pauseBetweenFlickeringInMs);
   int randF = util.GetRandomIntWithDelay(ledCount, delayBetweenNewRandomValueInMs);
 
   update(randF, canFlicker);
 }
 
 void singleRandomFlicker() {
-  bool canFlicker = util.SwitchBooleanWithDelay(random(pauseBetweenFlickeringInMs, 5000));
-  
+  bool canFlicker = util.SwitchBooleanWithDelay(pauseBetweenFlickeringInMs);
   int randF = util.GetRandomIntWithDelay(ledCount, delayBetweenNewRandomValueInMs);
-  
-  if (canFlicker && randF != previousLed) 
-  {
+  if (canFlicker && randF != previousLed) {
     randF = previousLed;
-  }
-  else if (!canFlicker)
-  {
+  } else if (!canFlicker) {
     previousLed = randF;
   }
 
@@ -65,3 +55,4 @@ void update(int ledIndex, bool canFlicker) {
     }
   }
 }
+

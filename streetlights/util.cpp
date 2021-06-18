@@ -12,16 +12,14 @@ int Util::GetRandomIntWithDelay(int max, int delayInMs /*= 1000*/)
 {
   unsigned long currentMillis = millis();
 
-  if (currentMillis - m_lPreviousMillisForRandomValue > delayInMs)
-  {
+  if (currentMillis - m_lPreviousMillisForRandomValue > delayInMs) {
     m_lPreviousMillisForRandomValue = currentMillis;
     randomNumber = random(max);
   }
   return randomNumber;
 }
 
-bool Util::SwitchBooleanWithDelay(int delayInMs /*= 1000*/)
-{
+bool Util::SwitchBooleanWithDelay(int delayInMs /*= 1000*/) {
   unsigned long currentMillis = millis();
 
   if (currentMillis - m_lPreviousMillisForBooleanValue > delayInMs) {
@@ -34,3 +32,4 @@ bool Util::SwitchBooleanWithDelay(int delayInMs /*= 1000*/)
   }
   return booleanValue;
 }
+
