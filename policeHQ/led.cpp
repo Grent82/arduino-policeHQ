@@ -39,8 +39,7 @@ void Led::Off()
 
 void Led::Flicker2() {
   int blinkPhase = millis() % (m_lOnTime + m_lOffTime);
-  if (blinkPhase < m_lOffTime) digitalWrite(m_LedPin, LOW);
-  else digitalWrite(m_LedPin, HIGH);
+  if (blinkPhase < m_lOffTime) Off(); else On();
 }
 
 
