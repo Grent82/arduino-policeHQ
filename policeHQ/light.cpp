@@ -7,17 +7,17 @@ StreetLigth::StreetLigth()
 }
 
 
-void StreetLigth::Init(int startPin)
+void StreetLigth::Init()
 {
-    startingPin = 13;
-
     pauseBetweenFlickeringInMs = DELAY_FOR_NEW_BOOLEAN;
     delayBetweenNewRandomValueInMs = DELAY_FOR_NEW_RANDOM;
 
     ledCount = sizeof(ledArray) / sizeof(ledArray[0]);
 
-    for (int i = 0; i < 13; i++) {
-        ledArray[i].Init(startingPin - i, 30, 50);
+    startingPin = ledCount - 1;
+
+    for (int i = 0; i < ledCount; i++) {
+        ledArray[i].Init(startingPin - i, 200, 800);
     }
 }
 

@@ -14,7 +14,7 @@ class StreetLigth
     void SingleRandomFlicker();
 
     private:
-    Led ledArray[13] = {Led(), Led(), Led(), Led(), Led(), Led(), Led(), Led(), Led(), Led(), Led(), Led(), Led()};
+    Led ledArray[17] = {Led(), Led(), Led(), Led(), Led(), Led(), Led(), Led(), Led(), Led(), Led(), Led(), Led(), Led(), Led(), Led(), Led()};
     int ledCount;
     int startingPin;
     int previousLed;
