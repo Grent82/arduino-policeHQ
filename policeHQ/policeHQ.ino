@@ -23,8 +23,8 @@ void loop() {
   streetLigth.SingleRandomFlicker();
   landingPadLed.Flicker2();
 
-  stepper.Move(-3000);
-  delay(500);
-  stepper.Move(3000);
-  delay(500);
+  //stepper.Move(-3000);
+  //delay(500);
+  //stepper.Move(3000);
+  //delay(500);
 }
