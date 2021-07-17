@@ -15,7 +15,7 @@ void setup() {
   streetLigth.Init();
   landingPadLed.Init(17, 1000, 1000);
 
-  stepper.Init(18, 19, 20, 21);
+  stepper.Init(20, 21, 22, 23);
 }
 
 void loop() {
@@ -23,8 +23,6 @@ void loop() {
   streetLigth.SingleRandomFlicker();
   landingPadLed.Flicker2();
 
-  //stepper.Move(-3000);
-  //delay(500);
-  //stepper.Move(3000);
-  //delay(500);
+  //stepper.Move(-3000, 500);
+  //stepper.Move(3000, 500);
 }

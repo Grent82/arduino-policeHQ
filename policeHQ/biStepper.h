@@ -3,6 +3,7 @@
 
 #include <Stepper.h>
 #include "config.h"
+#include "Arduino.h"
 
 
 class BiStepper 
@@ -10,10 +11,11 @@ class BiStepper
     public:
     BiStepper();
     void Init(int motorPin1, int motorPin2, int motorPin3, int motorPin4);
-    void Move(int sstep);
+    void Move(int step, unsigned int delay);
 
     private:
-    int motorSpeed;
+    int m_iMotorSpeed;
+	  unsigned long m_lPreviousMoveMillis;
 };
 
 #endif
