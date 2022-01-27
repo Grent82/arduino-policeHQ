@@ -1,7 +1,7 @@
 #include "biStepper.h"
 
 
-Stepper myStepper(200, 8, 9, 10, 11); // 1000 steps zu viel
+Stepper myStepper(200, 2, 3, 4, 5); // 1000 steps zu viel
 
 BiStepper::BiStepper()
 {

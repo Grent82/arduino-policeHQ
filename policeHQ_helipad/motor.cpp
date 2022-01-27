@@ -6,7 +6,7 @@ Motor::Motor()
 
 void Motor::Init(unsigned int motor1Pin1, unsigned int motor1Pin2, unsigned int enable1Pin)
 {
-  uiMaxSpeed = 1024;
+  uiMaxSpeed = 2024;
   uiSpeedUp = 4;
 
   uiPwmMax = 255;
@@ -54,9 +54,9 @@ void Motor::Stop()
   analogWrite(uiEnable1Pin, uiPwmMin);
 }
 
-void Motor::Move(unsigned int value)
+void Motor::Move(int value)
 {
   int pwmOutput = map(value, 0, uiMaxSpeed - 1, 0, 255);
   analogWrite(uiEnable1Pin, pwmOutput);
-  delay(100);
+  delay(20);
 }

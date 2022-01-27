@@ -20,15 +20,15 @@ class Motor
     unsigned int uiMotor1Pin2;
     unsigned int uiEnable1Pin;
 
-    unsigned int uiMaxSpeed;
-    unsigned int uiSpeedUp;
+    int uiMaxSpeed;
+    int uiSpeedUp;
 
-    unsigned int uiPwmMax;
-    unsigned int uiPwmMin;
+    int uiPwmMax;
+    int uiPwmMin;
 
     unsigned long m_lPreviousMoveMillis;
 
-    void Move(unsigned int value);
+    void Move(int value);
 
 };
 
